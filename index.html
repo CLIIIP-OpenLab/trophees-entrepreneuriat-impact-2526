@@ -504,35 +504,5 @@ Les Trophées distinguent des initiatives qui conjuguent
         });
       })();
     </script>
-    <script>
-      // Sécurisation offcanvas mobile : charge Bootstrap si nécessaire et force l'ouverture/fermeture
-      (function () {
-        function initOffcanvas() {
-          var ocEl = document.getElementById('menuMobile');
-          if (!ocEl || !(window.bootstrap && bootstrap.Offcanvas)) return;
-          var oc = bootstrap.Offcanvas.getOrCreateInstance(ocEl);
-          document.querySelectorAll('[data-bs-target="#menuMobile"]').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-              try { oc.toggle(); } catch (e) { /* no-op */ }
-            });
-          });
-          ocEl.querySelectorAll('a[data-bs-dismiss="offcanvas"]').forEach(function (lnk) {
-            lnk.addEventListener('click', function () {
-              try { oc.hide(); } catch (e) { /* no-op */ }
-            });
-          });
-        }
-        // Si Bootstrap est déjà là, on initialise tout de suite
-        if (window.bootstrap && bootstrap.Offcanvas) {
-          initOffcanvas();
-        } else {
-          // Sinon on charge Bootstrap bundle dynamiquement
-          var s = document.createElement('script');
-          s.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js';
-          s.onload = initOffcanvas;
-          document.head.appendChild(s);
-        }
-      })();
-    </script>
   </body>
 </html>
