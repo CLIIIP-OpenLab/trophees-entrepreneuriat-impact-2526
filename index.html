@@ -461,7 +461,7 @@ Les Trophées distinguent des initiatives qui conjuguent
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoYmvHf0sV8GJZ7gk5/3HkG6JQ5D8nE1zM6w5W0pGfyT1Jw" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Theme auto (respecte le thème de l’appareil) -->
     <script>
@@ -505,25 +505,33 @@ Les Trophées distinguent des initiatives qui conjuguent
       })();
     </script>
     <script>
-      // Sécurisation offcanvas mobile : forcer l'ouverture/fermeture si le data API est bloqué
+      // Sécurisation offcanvas mobile : charge Bootstrap si nécessaire et force l'ouverture/fermeture
       (function () {
-        var ocEl = document.getElementById('menuMobile');
-        if (!ocEl) return;
-        // Bootstrap Offcanvas instance
-        var oc = bootstrap.Offcanvas.getOrCreateInstance(ocEl);
-        // Cible tous les triggers qui pointent vers #menuMobile
-        document.querySelectorAll('[data-bs-target="#menuMobile"]').forEach(function (btn) {
-          btn.addEventListener('click', function (ev) {
-            // Laisser Bootstrap gérer si déjà ouvert/fermé, sinon toggle
-            try { oc.toggle(); } catch (e) { /* no-op */ }
+        function initOffcanvas() {
+          var ocEl = document.getElementById('menuMobile');
+          if (!ocEl || !(window.bootstrap && bootstrap.Offcanvas)) return;
+          var oc = bootstrap.Offcanvas.getOrCreateInstance(ocEl);
+          document.querySelectorAll('[data-bs-target="#menuMobile"]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              try { oc.toggle(); } catch (e) { /* no-op */ }
+            });
           });
-        });
-        // Fermer l'offcanvas après navigation vers une ancre (au cas où)
-        ocEl.querySelectorAll('a[data-bs-dismiss="offcanvas"]').forEach(function (lnk) {
-          lnk.addEventListener('click', function () {
-            try { oc.hide(); } catch (e) { /* no-op */ }
+          ocEl.querySelectorAll('a[data-bs-dismiss="offcanvas"]').forEach(function (lnk) {
+            lnk.addEventListener('click', function () {
+              try { oc.hide(); } catch (e) { /* no-op */ }
+            });
           });
-        });
+        }
+        // Si Bootstrap est déjà là, on initialise tout de suite
+        if (window.bootstrap && bootstrap.Offcanvas) {
+          initOffcanvas();
+        } else {
+          // Sinon on charge Bootstrap bundle dynamiquement
+          var s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js';
+          s.onload = initOffcanvas;
+          document.head.appendChild(s);
+        }
       })();
     </script>
   </body>
