@@ -504,5 +504,27 @@ Les Trophées distinguent des initiatives qui conjuguent
         });
       })();
     </script>
+    <script>
+      // Sécurisation offcanvas mobile : forcer l'ouverture/fermeture si le data API est bloqué
+      (function () {
+        var ocEl = document.getElementById('menuMobile');
+        if (!ocEl) return;
+        // Bootstrap Offcanvas instance
+        var oc = bootstrap.Offcanvas.getOrCreateInstance(ocEl);
+        // Cible tous les triggers qui pointent vers #menuMobile
+        document.querySelectorAll('[data-bs-target="#menuMobile"]').forEach(function (btn) {
+          btn.addEventListener('click', function (ev) {
+            // Laisser Bootstrap gérer si déjà ouvert/fermé, sinon toggle
+            try { oc.toggle(); } catch (e) { /* no-op */ }
+          });
+        });
+        // Fermer l'offcanvas après navigation vers une ancre (au cas où)
+        ocEl.querySelectorAll('a[data-bs-dismiss="offcanvas"]').forEach(function (lnk) {
+          lnk.addEventListener('click', function () {
+            try { oc.hide(); } catch (e) { /* no-op */ }
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
