@@ -504,5 +504,52 @@ Les Trophées distinguent des initiatives qui conjuguent
         });
       })();
     </script>
+    <script>
+      // Navigation ancrée fiable (mobile + desktop) avec offset du bandeau fixe
+      (function () {
+        var HEADER_OFFSET = 80;
+        function scrollToId(id) {
+          var el = document.querySelector(id);
+          if (!el) return;
+          var y = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+          // Met à jour l'URL sans recharger
+          if (history && history.pushState) history.pushState(null, '', id);
+        }
+
+        // Desktop : liens internes du bandeau
+        document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+          a.addEventListener('click', function (e) {
+            var hash = a.getAttribute('href');
+            if (!hash || hash === '#') return;
+            // Si c'est un lien dans l'offcanvas, on laisse le handler mobile faire (voir plus bas)
+            if (a.closest('.offcanvas')) return;
+            e.preventDefault();
+            scrollToId(hash);
+          });
+        });
+
+        // Mobile : liens internes depuis l'offcanvas -> fermer puis scroller
+        var ocEl = document.getElementById('menuMobile');
+        if (ocEl && window.bootstrap && bootstrap.Offcanvas) {
+          var oc = bootstrap.Offcanvas.getOrCreateInstance(ocEl);
+          ocEl.querySelectorAll('a[href^="#"]').forEach(function (lnk) {
+            lnk.addEventListener('click', function (e) {
+              var hash = lnk.getAttribute('href');
+              if (!hash || hash === '#') return;
+              e.preventDefault();
+              // Ferme d'abord l'offcanvas puis scrolle quand il est totalement masqué
+              var onHidden = function () {
+                ocEl.removeEventListener('hidden.bs.offcanvas', onHidden);
+                // Petit timeout pour laisser au navigateur le temps de réactiver le scroll
+                setTimeout(function () { scrollToId(hash); }, 50);
+              };
+              ocEl.addEventListener('hidden.bs.offcanvas', onHidden);
+              try { oc.hide(); } catch (err) { onHidden(); }
+            });
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
