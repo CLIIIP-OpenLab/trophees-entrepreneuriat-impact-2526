@@ -101,8 +101,11 @@
               <a class="btn btn-lg text-white" style="background-color:#3a7bd5; border-color:#3a7bd5" href="https://moodle2526-formation.centralelille.fr/mod/assign/view.php?id=2784">
                 <i class="fa-solid fa-file-arrow-up me-2"></i>Candidater
               </a>
-              <a class="btn btn-lg btn-outline-light" href="mailto:badr.jelil@centralelille.fr">
-                <i class="fa-solid fa-envelope me-2"></i>Contact
+              <a class="btn btn-lg btn-outline-light" href="./TEI2026.pdf" download>
+                <i class="fa-solid fa-file-pdf me-2"></i>Carton d’invitation
+              </a>
+              <a class="btn btn-lg btn-outline-light" href="https://docs.google.com/forms/d/e/1FAIpQLSc80PQMOOQzHCNN4awxaZxaS0QYrf7khcWoUe6v3JmdhmcgIQ/viewform?usp=send_form" target="_blank" rel="noopener">
+                <i class="fa-solid fa-pen-to-square me-2"></i>Inscription à la cérémonie
               </a>
             </div>
 
@@ -127,8 +130,12 @@
               <div class="col-12">
                 <div class="card border-0 shadow-sm bg-body-tertiary">
                   <div class="card-body d-lg-flex align-items-center">
-                    <div class="me-lg-4 mb-3 mb-lg-0">
-                      <i class="fa-solid fa-lightbulb" style="font-size:2.2rem; color:#3cb371;"></i>
+                    <div class="me-lg-4 mb-3 mb-lg-0 d-flex justify-content-center justify-content-lg-start">
+                      <a href="PIX/invitation.png" target="_blank" rel="noopener" title="Ouvrir l’invitation en grand dans un nouvel onglet" class="d-inline-block">
+                        <img src="PIX/invitation.png" alt="Carton d’invitation — Trophées (cliquer pour agrandir)"
+                             class="img-fluid rounded shadow-sm hero-invite-img"
+                             style="width:100%; max-width:240px; height:auto; cursor:pointer;">
+                      </a>
                     </div>
                     <div>
                       <p class="mb-0">
@@ -219,55 +226,72 @@ Les Trophées distinguent des initiatives qui conjuguent
                 </div>
               </div>
 
-              <!-- Conditions d’éligibilité -->
+              <!-- Accordéon détails -->
+              <div id="details"></div>
               <div class="col-12">
-                <div class="card border-0 shadow-sm" style="border-left:6px solid #483d8b;">
-                  <div class="card-body">
-                    <h3 class="h5 card-title">
-                      <i class="fa-solid fa-circle-check me-2" style="color:#483d8b;"></i>Conditions d’éligibilité
-                    </h3>
-                    <ul class="mb-0">
-                      <li><i class="fa-solid fa-user-graduate me-2 text-body-secondary"></i>Projet porté par un <strong>étudiant·e</strong> ou un <strong>doctorant</strong></li>
-                      <li><i class="fa-solid fa-id-card me-2 text-body-secondary"></i><strong>Statut national d’étudiant entrepreneur (SNEE)</strong> détenu ou demande en cours</li>
-                      <li><i class="fa-solid fa-school me-2 text-body-secondary"></i>Au moins un·e associé·e actuellement en études à <strong>Centrale Lille Institut</strong></li>
-                      <li><i class="fa-solid fa-earth-europe me-2 text-body-secondary"></i>Projet à <strong>impact</strong> lié à un <strong><a href="https://www.un.org/sustainabledevelopment/fr/objectifs-de-developpement-durable/" class="link-primary" target="_blank" rel="noopener">ODD de l’ONU</a></strong></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+                <div class="accordion" id="accDetails">
 
-              <!-- Modalités & sélection -->
-              <div class="col-12">
-                <div class="card border-0 shadow-sm bg-body-tertiary">
-                  <div class="card-body">
-                    <h3 class="h5 card-title">
-                      <i class="fa-solid fa-file-signature me-2"></i>Modalités &amp; sélection
+                  <!-- Conditions d’éligibilité -->
+                  <div class="accordion-item border-0 shadow-sm mb-2">
+                    <h3 class="accordion-header" id="headElig">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseElig" aria-expanded="false" aria-controls="collapseElig">
+                        <i class="fa-solid fa-circle-check me-2" style="color:#483d8b;"></i>
+                        Conditions d’éligibilité (cliquez ici)
+                      </button>
                     </h3>
-                    <ul class="mb-0">
-                      <li><i class="fa-solid fa-cloud-arrow-up me-2 text-body-secondary"></i>Dépôt sur <strong>Moodle</strong> – espace « Trophées de l’Entrepreneuriat à Impact »</li>
-                      <li><i class="fa-solid fa-file-pdf me-2 text-body-secondary"></i>Dossier au format <strong>PDF</strong>, <strong>15 pages max</strong> (business plan simplifié ou présentation du projet)</li>
-                      <li><i class="fa-solid fa-magnifying-glass me-2 text-body-secondary"></i><strong>Présélection</strong> des projets avant validation</li>
-                      <li><i class="fa-solid fa-chalkboard-user me-2 text-body-secondary"></i><strong>Accompagnement au pitch</strong> pour les projets retenus</li>
-                      <li><i class="fa-solid fa-video me-2 text-body-secondary"></i>Possibilité de <strong>tournage vidéo</strong> pour valoriser l’initiative</li>
-                    </ul>
+                    <div id="collapseElig" class="accordion-collapse collapse" aria-labelledby="headElig" data-bs-parent="#accDetails">
+                      <div class="accordion-body">
+                        <ul class="mb-0">
+                          <li><i class="fa-solid fa-user-graduate me-2 text-body-secondary"></i>Projet porté par un <strong>étudiant·e</strong> ou un <strong>doctorant</strong></li>
+                          <li><i class="fa-solid fa-id-card me-2 text-body-secondary"></i><strong>Statut national d’étudiant entrepreneur (SNEE)</strong> détenu ou demande en cours</li>
+                          <li><i class="fa-solid fa-school me-2 text-body-secondary"></i>Au moins un·e associé·e actuellement en études à <strong>Centrale Lille Institut</strong></li>
+                          <li><i class="fa-solid fa-earth-europe me-2 text-body-secondary"></i>Projet à <strong>impact</strong> lié à un <strong><a href="https://www.un.org/sustainabledevelopment/fr/objectifs-de-developpement-durable/" class="link-primary" target="_blank" rel="noopener">ODD de l’ONU</a></strong></li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
 
-              <!-- Calendrier (exhaustif) -->
-              <div class="col-12">
-                <div class="card h-100 border-0 shadow-sm" style="border-left:6px solid #3a7bd5;">
-                  <div class="card-body">
-                    <h3 class="h5 card-title">
-                      <i class="fa-solid fa-calendar-days me-2" style="color:#3a7bd5;"></i>Calendrier
+                  <!-- Modalités & sélection -->
+                  <div class="accordion-item border-0 shadow-sm mb-2">
+                    <h3 class="accordion-header" id="headModalites">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseModalites" aria-expanded="false" aria-controls="collapseModalites">
+                        <i class="fa-solid fa-file-signature me-2"></i>
+                        Modalités &amp; sélection (cliquez ici)
+                      </button>
                     </h3>
-                    <ul class="mb-2">
-                      <li><i class="fa-solid fa-door-open me-2 text-body-secondary"></i><strong>Ouverture des candidatures</strong> : <strong>12&nbsp;novembre&nbsp;2025</strong></li>
-                      <li><i class="fa-solid fa-hourglass-end me-2 text-body-secondary"></i><strong>Date limite de dépôt</strong> : <strong>19&nbsp;décembre&nbsp;2025</strong></li>
-                      <li><i class="fa-solid fa-award me-2 text-body-secondary"></i><strong>Cérémonie des Trophées</strong> : <strong>12&nbsp;février&nbsp;2026</strong></li>
-                    </ul>
-                    <p class="small text-body-secondary mb-0">Les informations détaillées (lieu, horaires, modalités de pitch) seront précisées aux candidat·es présélectionné·es.</p>
+                    <div id="collapseModalites" class="accordion-collapse collapse" aria-labelledby="headModalites" data-bs-parent="#accDetails">
+                      <div class="accordion-body">
+                        <ul class="mb-0">
+                          <li><i class="fa-solid fa-cloud-arrow-up me-2 text-body-secondary"></i>Dépôt sur <strong>Moodle</strong> – espace « Trophées de l’Entrepreneuriat à Impact »</li>
+                          <li><i class="fa-solid fa-file-pdf me-2 text-body-secondary"></i>Dossier au format <strong>PDF</strong>, <strong>15 pages max</strong> (business plan simplifié ou présentation du projet)</li>
+                          <li><i class="fa-solid fa-magnifying-glass me-2 text-body-secondary"></i><strong>Présélection</strong> des projets avant validation</li>
+                          <li><i class="fa-solid fa-chalkboard-user me-2 text-body-secondary"></i><strong>Accompagnement au pitch</strong> pour les projets retenus</li>
+                          <li><i class="fa-solid fa-video me-2 text-body-secondary"></i>Possibilité de <strong>tournage vidéo</strong> pour valoriser l’initiative</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
+
+                  <!-- Calendrier -->
+                  <div class="accordion-item border-0 shadow-sm mb-2">
+                    <h3 class="accordion-header" id="headCalendrier">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCalendrier" aria-expanded="false" aria-controls="collapseCalendrier">
+                        <i class="fa-solid fa-calendar-days me-2" style="color:#3a7bd5;"></i>
+                        Calendrier (cliquez ici)
+                      </button>
+                    </h3>
+                    <div id="collapseCalendrier" class="accordion-collapse collapse" aria-labelledby="headCalendrier" data-bs-parent="#accDetails">
+                      <div class="accordion-body">
+                        <ul class="mb-2">
+                          <li><i class="fa-solid fa-door-open me-2 text-body-secondary"></i><strong>Ouverture des candidatures</strong> : <strong>12&nbsp;novembre&nbsp;2025</strong></li>
+                          <li><i class="fa-solid fa-hourglass-end me-2 text-body-secondary"></i><strong>Date limite de dépôt</strong> : <strong>19&nbsp;décembre&nbsp;2025</strong></li>
+                          <li><i class="fa-solid fa-award me-2 text-body-secondary"></i><strong>Cérémonie des Trophées</strong> : <strong>12&nbsp;février&nbsp;2026</strong></li>
+                        </ul>
+                        <p class="small text-body-secondary mb-0">Les informations détaillées (lieu, horaires, modalités de pitch) seront précisées aux candidat·es présélectionné·es.</p>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
@@ -279,24 +303,17 @@ Les Trophées distinguent des initiatives qui conjuguent
                       <i class="fa-solid fa-microphone-lines me-2"></i>Programme de la cérémonie
                     </h3>
                     <ul class="mb-0">
-                      <li><i class="fa-regular fa-clock me-2 text-body-secondary"></i>Accueil des participant·es &amp; ouverture par l’équipe organisatrice</li>
-                      <li><i class="fa-solid fa-person-chalkboard me-2 text-body-secondary"></i>Présentation des finalistes &amp; <strong>pitchs courts</strong> devant le jury</li>
-                      <li><i class="fa-solid fa-comments me-2 text-body-secondary"></i>Échanges rapides <strong>questions/réponses</strong> avec le jury</li>
-                      <li><i class="fa-solid fa-scale-balanced me-2 text-body-secondary"></i>Délibération du jury</li>
-                      <li><i class="fa-solid fa-award me-2 text-body-secondary"></i>Annonce des lauréats &amp; remise des Trophées</li>
-                      <li><i class="fa-solid fa-people-arrows me-2 text-body-secondary"></i>Temps convivial de <strong>networking</strong></li>
+                      <li><i class="fa-regular fa-clock me-2 text-body-secondary"></i>18h - Ouverture & Accueil</li>
+                      <li><i class="fa-solid fa-person-chalkboard me-2 text-body-secondary"></i>18h15 - Table ronde en présence d'entrepreneurs engagés</li>
+                      <li><i class="fa-solid fa-comments me-2 text-body-secondary"></i>19h - Session de pitchs devant un jury d'experts et d'entrepreneurs chevronnés</li>
+                      <li><i class="fa-solid fa-martini-glass-empty me-2 text-body-secondary"></i> 20h - Cocktail convivial</li>
+                      <li><i class="fa-solid fa-award me-2 text-body-secondary"></i>20h30 - Remise des prix</li>
                     </ul>
                   </div>
                 </div>
               </div>
 
-              <!-- Info -->
-              <div class="col-12">
-                <div class="alert alert-warning mt-2" role="alert">
-                  <i class="fa-solid fa-circle-info me-2"></i>
-                  Pour connaître en détail les modalités de dépôt, rendez-vous sur la page dédiée de la plateforme.
-                </div>
-              </div>
+             
             </div>
           </div>
         </div>
@@ -549,6 +566,32 @@ Les Trophées distinguent des initiatives qui conjuguent
             });
           });
         }
+      })();
+    </script>
+    <script>
+      // Effet léger sur l'image d'invitation (scale/tilt) sans CSS externe
+      (function () {
+        var img = document.querySelector('.hero-invite-img');
+        if (!img) return;
+        img.style.transition = 'transform .25s ease, box-shadow .25s ease';
+        img.addEventListener('mouseenter', function () {
+          img.style.transform = 'scale(1.03) rotate(-1deg)';
+          img.style.boxShadow = '0 6px 18px rgba(0,0,0,.2)';
+        });
+        img.addEventListener('mouseleave', function () {
+          img.style.transform = 'none';
+          img.style.boxShadow = '0 2px 8px rgba(0,0,0,.15)';
+        });
+        // Accessibilité clavier
+        img.setAttribute('tabindex', '0');
+        img.addEventListener('focus', function () {
+          img.style.transform = 'scale(1.03)';
+          img.style.boxShadow = '0 0 0 .25rem rgba(58,123,213,.35)';
+        });
+        img.addEventListener('blur', function () {
+          img.style.transform = 'none';
+          img.style.boxShadow = '0 2px 8px rgba(0,0,0,.15)';
+        });
       })();
     </script>
   </body>
